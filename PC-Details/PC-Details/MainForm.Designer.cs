@@ -30,9 +30,21 @@
         {
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageCPU = new System.Windows.Forms.TabPage();
+            this.groupBoxCache = new System.Windows.Forms.GroupBox();
+            this.labelCPUL3CahceSize = new System.Windows.Forms.Label();
+            this.labelCPUL2CacheSize = new System.Windows.Forms.Label();
+            this.labelCPUL3CacheSizeValue = new System.Windows.Forms.Label();
+            this.labelCPUL2CacheSizeValue = new System.Windows.Forms.Label();
+            this.groupBoxClocks = new System.Windows.Forms.GroupBox();
+            this.labelCPUPercentProcessorTime = new System.Windows.Forms.Label();
+            this.labelCPUPercentProcessorTimeValue = new System.Windows.Forms.Label();
+            this.labelCPUCurrentClockSpeed = new System.Windows.Forms.Label();
+            this.labelCPUCurrentClockSpeedValue = new System.Windows.Forms.Label();
             this.groupBoxProcessor = new System.Windows.Forms.GroupBox();
+            this.labelCPUNumberOfLogicalProcessors = new System.Windows.Forms.Label();
             this.labelCPUNumberOfCores = new System.Windows.Forms.Label();
             this.labelCPUSocketDesignation = new System.Windows.Forms.Label();
+            this.labelCPUNumberOfLogicalProcessorsValue = new System.Windows.Forms.Label();
             this.labelCPUNumberOfCoresValue = new System.Windows.Forms.Label();
             this.labelCPUSocketDesignationValue = new System.Windows.Forms.Label();
             this.labelCPUName = new System.Windows.Forms.Label();
@@ -43,10 +55,10 @@
             this.labelCPUCaption = new System.Windows.Forms.Label();
             this.tabPageMainboard = new System.Windows.Forms.TabPage();
             this.tabPageMemory = new System.Windows.Forms.TabPage();
-            this.labelCPUNumberOfLogicalProcessorsValue = new System.Windows.Forms.Label();
-            this.labelCPUNumberOfLogicalProcessors = new System.Windows.Forms.Label();
             this.tabControlMain.SuspendLayout();
             this.tabPageCPU.SuspendLayout();
+            this.groupBoxCache.SuspendLayout();
+            this.groupBoxClocks.SuspendLayout();
             this.groupBoxProcessor.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +75,8 @@
             // 
             // tabPageCPU
             // 
+            this.tabPageCPU.Controls.Add(this.groupBoxCache);
+            this.tabPageCPU.Controls.Add(this.groupBoxClocks);
             this.tabPageCPU.Controls.Add(this.groupBoxProcessor);
             this.tabPageCPU.Location = new System.Drawing.Point(4, 22);
             this.tabPageCPU.Name = "tabPageCPU";
@@ -71,6 +85,108 @@
             this.tabPageCPU.TabIndex = 0;
             this.tabPageCPU.Text = "CPU";
             this.tabPageCPU.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxCache
+            // 
+            this.groupBoxCache.Controls.Add(this.labelCPUL3CahceSize);
+            this.groupBoxCache.Controls.Add(this.labelCPUL2CacheSize);
+            this.groupBoxCache.Controls.Add(this.labelCPUL3CacheSizeValue);
+            this.groupBoxCache.Controls.Add(this.labelCPUL2CacheSizeValue);
+            this.groupBoxCache.Location = new System.Drawing.Point(227, 193);
+            this.groupBoxCache.Name = "groupBoxCache";
+            this.groupBoxCache.Size = new System.Drawing.Size(200, 100);
+            this.groupBoxCache.TabIndex = 4;
+            this.groupBoxCache.TabStop = false;
+            this.groupBoxCache.Text = "Cache";
+            // 
+            // labelCPUL3CahceSize
+            // 
+            this.labelCPUL3CahceSize.AutoSize = true;
+            this.labelCPUL3CahceSize.Location = new System.Drawing.Point(6, 78);
+            this.labelCPUL3CahceSize.Name = "labelCPUL3CahceSize";
+            this.labelCPUL3CahceSize.Size = new System.Drawing.Size(19, 13);
+            this.labelCPUL3CahceSize.TabIndex = 3;
+            this.labelCPUL3CahceSize.Text = "L3";
+            // 
+            // labelCPUL2CacheSize
+            // 
+            this.labelCPUL2CacheSize.AutoSize = true;
+            this.labelCPUL2CacheSize.Location = new System.Drawing.Point(6, 47);
+            this.labelCPUL2CacheSize.Name = "labelCPUL2CacheSize";
+            this.labelCPUL2CacheSize.Size = new System.Drawing.Size(19, 13);
+            this.labelCPUL2CacheSize.TabIndex = 3;
+            this.labelCPUL2CacheSize.Text = "L2";
+            // 
+            // labelCPUL3CacheSizeValue
+            // 
+            this.labelCPUL3CacheSizeValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelCPUL3CacheSizeValue.Location = new System.Drawing.Point(44, 73);
+            this.labelCPUL3CacheSizeValue.Name = "labelCPUL3CacheSizeValue";
+            this.labelCPUL3CacheSizeValue.Size = new System.Drawing.Size(93, 22);
+            this.labelCPUL3CacheSizeValue.TabIndex = 2;
+            this.labelCPUL3CacheSizeValue.Text = "labelCPUL3CacheSizeValue";
+            this.labelCPUL3CacheSizeValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelCPUL2CacheSizeValue
+            // 
+            this.labelCPUL2CacheSizeValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelCPUL2CacheSizeValue.Location = new System.Drawing.Point(44, 46);
+            this.labelCPUL2CacheSizeValue.Name = "labelCPUL2CacheSizeValue";
+            this.labelCPUL2CacheSizeValue.Size = new System.Drawing.Size(93, 22);
+            this.labelCPUL2CacheSizeValue.TabIndex = 2;
+            this.labelCPUL2CacheSizeValue.Text = "labelCPUL2CacheSizeValue";
+            this.labelCPUL2CacheSizeValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // groupBoxClocks
+            // 
+            this.groupBoxClocks.Controls.Add(this.labelCPUPercentProcessorTime);
+            this.groupBoxClocks.Controls.Add(this.labelCPUPercentProcessorTimeValue);
+            this.groupBoxClocks.Controls.Add(this.labelCPUCurrentClockSpeed);
+            this.groupBoxClocks.Controls.Add(this.labelCPUCurrentClockSpeedValue);
+            this.groupBoxClocks.Location = new System.Drawing.Point(6, 193);
+            this.groupBoxClocks.Name = "groupBoxClocks";
+            this.groupBoxClocks.Size = new System.Drawing.Size(189, 100);
+            this.groupBoxClocks.TabIndex = 3;
+            this.groupBoxClocks.TabStop = false;
+            this.groupBoxClocks.Text = "Clocks";
+            // 
+            // labelCPUPercentProcessorTime
+            // 
+            this.labelCPUPercentProcessorTime.AutoSize = true;
+            this.labelCPUPercentProcessorTime.Location = new System.Drawing.Point(6, 51);
+            this.labelCPUPercentProcessorTime.Name = "labelCPUPercentProcessorTime";
+            this.labelCPUPercentProcessorTime.Size = new System.Drawing.Size(31, 13);
+            this.labelCPUPercentProcessorTime.TabIndex = 3;
+            this.labelCPUPercentProcessorTime.Text = "Load";
+            // 
+            // labelCPUPercentProcessorTimeValue
+            // 
+            this.labelCPUPercentProcessorTimeValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelCPUPercentProcessorTimeValue.Location = new System.Drawing.Point(78, 47);
+            this.labelCPUPercentProcessorTimeValue.Name = "labelCPUPercentProcessorTimeValue";
+            this.labelCPUPercentProcessorTimeValue.Size = new System.Drawing.Size(78, 22);
+            this.labelCPUPercentProcessorTimeValue.TabIndex = 2;
+            this.labelCPUPercentProcessorTimeValue.Text = "labellabelCPUPercentProcessorTimeValue";
+            this.labelCPUPercentProcessorTimeValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelCPUCurrentClockSpeed
+            // 
+            this.labelCPUCurrentClockSpeed.AutoSize = true;
+            this.labelCPUCurrentClockSpeed.Location = new System.Drawing.Point(6, 20);
+            this.labelCPUCurrentClockSpeed.Name = "labelCPUCurrentClockSpeed";
+            this.labelCPUCurrentClockSpeed.Size = new System.Drawing.Size(63, 13);
+            this.labelCPUCurrentClockSpeed.TabIndex = 3;
+            this.labelCPUCurrentClockSpeed.Text = "Core Speed";
+            // 
+            // labelCPUCurrentClockSpeedValue
+            // 
+            this.labelCPUCurrentClockSpeedValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelCPUCurrentClockSpeedValue.Location = new System.Drawing.Point(78, 16);
+            this.labelCPUCurrentClockSpeedValue.Name = "labelCPUCurrentClockSpeedValue";
+            this.labelCPUCurrentClockSpeedValue.Size = new System.Drawing.Size(78, 22);
+            this.labelCPUCurrentClockSpeedValue.TabIndex = 2;
+            this.labelCPUCurrentClockSpeedValue.Text = "labelCPUCurrentClockSpeedValue";
+            this.labelCPUCurrentClockSpeedValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBoxProcessor
             // 
@@ -88,10 +204,19 @@
             this.groupBoxProcessor.Controls.Add(this.labelCPUCaption);
             this.groupBoxProcessor.Location = new System.Drawing.Point(6, 6);
             this.groupBoxProcessor.Name = "groupBoxProcessor";
-            this.groupBoxProcessor.Size = new System.Drawing.Size(421, 138);
+            this.groupBoxProcessor.Size = new System.Drawing.Size(421, 136);
             this.groupBoxProcessor.TabIndex = 1;
             this.groupBoxProcessor.TabStop = false;
             this.groupBoxProcessor.Text = "Processor";
+            // 
+            // labelCPUNumberOfLogicalProcessors
+            // 
+            this.labelCPUNumberOfLogicalProcessors.AutoSize = true;
+            this.labelCPUNumberOfLogicalProcessors.Location = new System.Drawing.Point(324, 71);
+            this.labelCPUNumberOfLogicalProcessors.Name = "labelCPUNumberOfLogicalProcessors";
+            this.labelCPUNumberOfLogicalProcessors.Size = new System.Drawing.Size(46, 13);
+            this.labelCPUNumberOfLogicalProcessors.TabIndex = 2;
+            this.labelCPUNumberOfLogicalProcessors.Text = "Threads";
             // 
             // labelCPUNumberOfCores
             // 
@@ -111,9 +236,19 @@
             this.labelCPUSocketDesignation.TabIndex = 2;
             this.labelCPUSocketDesignation.Text = "Socket";
             // 
+            // labelCPUNumberOfLogicalProcessorsValue
+            // 
+            this.labelCPUNumberOfLogicalProcessorsValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelCPUNumberOfLogicalProcessorsValue.Location = new System.Drawing.Point(376, 67);
+            this.labelCPUNumberOfLogicalProcessorsValue.Name = "labelCPUNumberOfLogicalProcessorsValue";
+            this.labelCPUNumberOfLogicalProcessorsValue.Size = new System.Drawing.Size(39, 21);
+            this.labelCPUNumberOfLogicalProcessorsValue.TabIndex = 1;
+            this.labelCPUNumberOfLogicalProcessorsValue.Text = "labelCPUNumberOfLogicalProcessorsValue";
+            this.labelCPUNumberOfLogicalProcessorsValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // labelCPUNumberOfCoresValue
             // 
-            this.labelCPUNumberOfCoresValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelCPUNumberOfCoresValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.labelCPUNumberOfCoresValue.Location = new System.Drawing.Point(376, 39);
             this.labelCPUNumberOfCoresValue.Name = "labelCPUNumberOfCoresValue";
             this.labelCPUNumberOfCoresValue.Size = new System.Drawing.Size(39, 21);
@@ -123,7 +258,7 @@
             // 
             // labelCPUSocketDesignationValue
             // 
-            this.labelCPUSocketDesignationValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelCPUSocketDesignationValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.labelCPUSocketDesignationValue.Location = new System.Drawing.Point(78, 95);
             this.labelCPUSocketDesignationValue.Name = "labelCPUSocketDesignationValue";
             this.labelCPUSocketDesignationValue.Size = new System.Drawing.Size(63, 21);
@@ -142,7 +277,7 @@
             // 
             // labelCPUNameValue
             // 
-            this.labelCPUNameValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelCPUNameValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.labelCPUNameValue.Location = new System.Drawing.Point(78, 67);
             this.labelCPUNameValue.Name = "labelCPUNameValue";
             this.labelCPUNameValue.Size = new System.Drawing.Size(240, 21);
@@ -161,7 +296,7 @@
             // 
             // labelCPUManufacturerValue
             // 
-            this.labelCPUManufacturerValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelCPUManufacturerValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.labelCPUManufacturerValue.Location = new System.Drawing.Point(78, 39);
             this.labelCPUManufacturerValue.Name = "labelCPUManufacturerValue";
             this.labelCPUManufacturerValue.Size = new System.Drawing.Size(240, 21);
@@ -171,7 +306,7 @@
             // 
             // labelCPUCaptionValue
             // 
-            this.labelCPUCaptionValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelCPUCaptionValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.labelCPUCaptionValue.Location = new System.Drawing.Point(78, 12);
             this.labelCPUCaptionValue.Name = "labelCPUCaptionValue";
             this.labelCPUCaptionValue.Size = new System.Drawing.Size(337, 21);
@@ -207,25 +342,6 @@
             this.tabPageMemory.Text = "Memory";
             this.tabPageMemory.UseVisualStyleBackColor = true;
             // 
-            // labelCPUNumberOfLogicalProcessorsValue
-            // 
-            this.labelCPUNumberOfLogicalProcessorsValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelCPUNumberOfLogicalProcessorsValue.Location = new System.Drawing.Point(376, 67);
-            this.labelCPUNumberOfLogicalProcessorsValue.Name = "labelCPUNumberOfLogicalProcessorsValue";
-            this.labelCPUNumberOfLogicalProcessorsValue.Size = new System.Drawing.Size(39, 21);
-            this.labelCPUNumberOfLogicalProcessorsValue.TabIndex = 1;
-            this.labelCPUNumberOfLogicalProcessorsValue.Text = "labelCPUNumberOfLogicalProcessorsValue";
-            this.labelCPUNumberOfLogicalProcessorsValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // labelCPUNumberOfLogicalProcessors
-            // 
-            this.labelCPUNumberOfLogicalProcessors.AutoSize = true;
-            this.labelCPUNumberOfLogicalProcessors.Location = new System.Drawing.Point(324, 71);
-            this.labelCPUNumberOfLogicalProcessors.Name = "labelCPUNumberOfLogicalProcessors";
-            this.labelCPUNumberOfLogicalProcessors.Size = new System.Drawing.Size(46, 13);
-            this.labelCPUNumberOfLogicalProcessors.TabIndex = 2;
-            this.labelCPUNumberOfLogicalProcessors.Text = "Threads";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -236,6 +352,10 @@
             this.Text = "PC-Details";
             this.tabControlMain.ResumeLayout(false);
             this.tabPageCPU.ResumeLayout(false);
+            this.groupBoxCache.ResumeLayout(false);
+            this.groupBoxCache.PerformLayout();
+            this.groupBoxClocks.ResumeLayout(false);
+            this.groupBoxClocks.PerformLayout();
             this.groupBoxProcessor.ResumeLayout(false);
             this.groupBoxProcessor.PerformLayout();
             this.ResumeLayout(false);
@@ -261,6 +381,16 @@
         private System.Windows.Forms.Label labelCPUSocketDesignationValue;
         private System.Windows.Forms.Label labelCPUNumberOfLogicalProcessors;
         private System.Windows.Forms.Label labelCPUNumberOfLogicalProcessorsValue;
+        private System.Windows.Forms.Label labelCPUCurrentClockSpeedValue;
+        private System.Windows.Forms.GroupBox groupBoxClocks;
+        private System.Windows.Forms.Label labelCPUCurrentClockSpeed;
+        private System.Windows.Forms.Label labelCPUPercentProcessorTime;
+        private System.Windows.Forms.Label labelCPUPercentProcessorTimeValue;
+        private System.Windows.Forms.GroupBox groupBoxCache;
+        private System.Windows.Forms.Label labelCPUL3CahceSize;
+        private System.Windows.Forms.Label labelCPUL2CacheSize;
+        private System.Windows.Forms.Label labelCPUL3CacheSizeValue;
+        private System.Windows.Forms.Label labelCPUL2CacheSizeValue;
     }
 }
 
