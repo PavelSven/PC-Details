@@ -142,6 +142,11 @@ namespace PC_Details
             TimerInfo.AutoReset = true;
         }
 
+        public void StopTimer()
+        {
+            TimerInfo.Enabled = false;
+        }
+
         private void TimerInfo_Elapsed(object sender, ElapsedEventArgs e)
         {
             UpdateDynamicInfo();
