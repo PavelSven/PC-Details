@@ -114,31 +114,29 @@ namespace PC_Details
 
         public void UpdateStaticInfo()
         {
-            uint L1InstructionCacheSizeTemp = 0;
-            uint L1DataCacheSizeTemp = 0;
+            /*            uint L1InstructionCacheSizeTemp = 0;
+                        uint L1DataCacheSizeTemp = 0;
 
-/*            ManagementObjectSearcher Win32_CacheMemory = new ManagementObjectSearcher("SELECT * FROM Win32_CacheMemory WHERE Level = 3");
-            foreach (ManagementObject mo in Win32_CacheMemory.Get())
-            {
-                ushort CacheType = Convert.ToUInt16(mo["CacheType"]);
-                uint MaxCacheSize = 1024 * Convert.ToUInt32(mo["MaxCacheSize"]);
+                        ManagementObjectSearcher Win32_CacheMemory = new ManagementObjectSearcher("SELECT * FROM Win32_CacheMemory WHERE Level = 3");
+                        foreach (ManagementObject mo in Win32_CacheMemory.Get())
+                        {
+                            ushort CacheType = Convert.ToUInt16(mo["CacheType"]);
+                            uint MaxCacheSize = 1024 * Convert.ToUInt32(mo["MaxCacheSize"]);
 
-                // if CacheType is Other or Unknown
-                if (L1InstructionCacheSizeTemp == 0)
-                    L1InstructionCacheSizeTemp = MaxCacheSize;
+                            // if CacheType is Other or Unknown
+                            if (L1InstructionCacheSizeTemp == 0)
+                                L1InstructionCacheSizeTemp = MaxCacheSize;
 
-                // if CacheType is Other or Unknown
-                if (L1DataCacheSizeTemp == 0)
-                    L1DataCacheSizeTemp = MaxCacheSize;
+                            // if CacheType is Other or Unknown
+                            if (L1DataCacheSizeTemp == 0)
+                                L1DataCacheSizeTemp = MaxCacheSize;
 
-                if (CacheType == 3) // Instruction
-                    L1InstructionCacheSizeTemp = MaxCacheSize;
+                            if (CacheType == 3) // Instruction
+                                L1InstructionCacheSizeTemp = MaxCacheSize;
 
-                if (CacheType == 4) // Data
-                    L1DataCacheSizeTemp = MaxCacheSize;
-            }*/
-
-
+                            if (CacheType == 4) // Data
+                                L1DataCacheSizeTemp = MaxCacheSize;
+                        }*/
 
             ManagementObjectSearcher mos = new ManagementObjectSearcher("SELECT * FROM Win32_Processor");
 

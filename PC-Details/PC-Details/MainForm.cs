@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibreHardwareMonitor.Hardware;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,8 +29,6 @@ namespace PC_Details
             memoryCollectionInfo = new MemoryCollectionInfo();
 
             LoadInfo();
-
-            //label1.Text = cpuInfo.test;
         }
 
         private void LoadInfo()
@@ -52,10 +51,10 @@ namespace PC_Details
 
         private void LoadProcessorInfo()
         {
-            labelCPUCaptionValue.Text = cpuInfo.Caption;
             labelCPUL2CacheSizeValue.Text = $"{cpuInfo.L2CacheSize / 6 / 1024} KB per core";
             labelCPUL3CacheSizeValue.Text = $"{cpuInfo.L3CacheSize / 1024 / 1024} MB";
             labelCPUManufacturerValue.Text = cpuInfo.Manufacturer;
+            LoadProcessorLogo(cpuInfo.Manufacturer);
             labelCPUNameValue.Text = cpuInfo.Name;
             labelCPUSocketDesignationValue.Text = cpuInfo.SocketDesignation;
             labelCPUNumberOfCoresValue.Text = cpuInfo.NumberOfCores.ToString();
@@ -150,6 +149,14 @@ namespace PC_Details
             labelMemorySerialNumberValue.Text = memoryCollectionInfo.memoryInfoList[index].SerialNumber;
             labelMemoryCapacityValue.Text = $"{memoryCollectionInfo.memoryInfoList[index].Capacity / 1024 / 1024 / 1024} GB";
             labelMemorySpeedValue.Text = $"{memoryCollectionInfo.memoryInfoList[index].Speed} MHz";
+        }
+
+        private void LoadProcessorLogo(string manufacturer)
+        {
+            if (manufacturer.Contains("AMD"))
+                pictureBoxProcessorLogo.Image = Image.FromFile("D:\\Users\\pavel\\Source\\Repos\\Project\\PC-Details\\PC-Details\\Logo\\AMD.png");
+            else if (manufacturer.Contains("Intel"))
+                pictureBoxProcessorLogo.Image = Image.FromFile("D:\\Users\\pavel\\Source\\Repos\\Project\\PC-Details\\PC-Details\\Logo\\Intel.png");
         }
     }
 }
