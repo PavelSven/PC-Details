@@ -14,45 +14,55 @@ namespace PC_Details
     public partial class MainForm : Form
     {
         public CPUInfo cpuInfo;
-        public MotherboardInfo mainboardInfo;
-        public BIOS bios;
+        public MotherboardInfo motherboardInfo;
+        public BIOSInfo biosInfo;
+        public MemoryCollectionInfo memoryCollectionInfo;
 
         public MainForm()
         {
             InitializeComponent();
 
             cpuInfo = new CPUInfo();
-            mainboardInfo = new MotherboardInfo();
-            bios = new BIOS();
+            motherboardInfo = new MotherboardInfo();
+            biosInfo = new BIOSInfo();
+            memoryCollectionInfo = new MemoryCollectionInfo();
 
+            LoadInfo();
+
+            //label1.Text = cpuInfo.test;
+        }
+
+        private void LoadInfo()
+        {
             LoadProcessorInfo();
             LoadMotherboardInfo();
             LoadBIOSInfo();
-            Bind();
+            BindCPU();
+            BindMotherboard();
+
+            for (int i = 0; i < memoryCollectionInfo.memoryInfoList.Count; i++)
+            {
+                comboBoxMemorySelection.Items.Add($"Memory #{i + 1}");
+            }
+            comboBoxMemorySelection.SelectedIndex = 0;
 
             cpuInfo.StartTimer();
-
-/*            labelCPUL2CacheSizeValue.Text = $"L1InstructionCacheSize {CPUInfo.L1InstructionCacheSize / 1000}\n" +
-                $"L1DataCacheSize {CPUInfo.L1DataCacheSize / 1000}\n" +
-                $"L2CacheSize {CPUInfo.L2CacheSize / 1000}\n" +
-                $"L3CacheSize {CPUInfo.L3CacheSize / 1000000}\n";*/
-            //label1.Text = mainboardInfo.test;
+            motherboardInfo.StartTimer();
         }
 
         private void LoadProcessorInfo()
         {
             labelCPUCaptionValue.Text = cpuInfo.Caption;
-            labelCPUL2CacheSizeValue.Text = $"{cpuInfo.L2CacheSize / 6 / 1000} KB per core";
-            labelCPUL3CacheSizeValue.Text = $"{cpuInfo.L3CacheSize / 1000 / 1000} MB";
+            labelCPUL2CacheSizeValue.Text = $"{cpuInfo.L2CacheSize / 6 / 1024} KB per core";
+            labelCPUL3CacheSizeValue.Text = $"{cpuInfo.L3CacheSize / 1024 / 1024} MB";
             labelCPUManufacturerValue.Text = cpuInfo.Manufacturer;
             labelCPUNameValue.Text = cpuInfo.Name;
             labelCPUSocketDesignationValue.Text = cpuInfo.SocketDesignation;
             labelCPUNumberOfCoresValue.Text = cpuInfo.NumberOfCores.ToString();
             labelCPUNumberOfLogicalProcessorsValue.Text = cpuInfo.NumberOfLogicalProcessors.ToString();
-            //labelCPUCurrentVoltageValue.Text = CPUInfo.CurrentVoltage.ToString();
         }
 
-        private void Bind()
+        private void BindCPU()
         {
             Binding bindingCurrentClockSpeed = new Binding("Text", cpuInfo, "CurrentClockSpeed", true);
             bindingCurrentClockSpeed.Format += (sender, e) => e.Value = $"{e.Value} MHz";
@@ -61,20 +71,51 @@ namespace PC_Details
             Binding bindingPercentProcessorTime = new Binding("Text", cpuInfo, "PercentProcessorTime", true);
             bindingPercentProcessorTime.Format += (sender, e) => e.Value = $"{e.Value} %";
             labelCPUPercentProcessorTimeValue.DataBindings.Add(bindingPercentProcessorTime);
+            
+            Binding bindingCPUTemperature = new Binding("Text", cpuInfo, "Temperature", true);
+            bindingCPUTemperature.Format += (sender, e) => e.Value = $"{e.Value:0} C";
+            labelCPUProcessorTemperatureValue.DataBindings.Add(bindingCPUTemperature);
+            
+            Binding bindingCPUBusSpeed = new Binding("Text", cpuInfo, "BusSpeed", true);
+            bindingCPUBusSpeed.Format += (sender, e) => e.Value = $"{e.Value:0.00} MHz";
+            labelCPUBusSpeedValue.DataBindings.Add(bindingCPUBusSpeed);
+        }
+
+        private void BindMotherboard()
+        {
+            Binding bindingMotherboardTemperatureSystem = new Binding("Text", motherboardInfo, "TemperatureSystem", true);
+            bindingMotherboardTemperatureSystem.Format += (sender, e) => e.Value = $"{e.Value:0} C";
+            labelTemperatureSystemValue.DataBindings.Add(bindingMotherboardTemperatureSystem);
+
+            Binding bindingMotherboardTemperatureVRMMOS = new Binding("Text", motherboardInfo, "TemperatureVRMMOS", true);
+            bindingMotherboardTemperatureVRMMOS.Format += (sender, e) => e.Value = $"{e.Value:0} C";
+            labelTemperatureVRMMOSValue.DataBindings.Add(bindingMotherboardTemperatureVRMMOS);
+
+            Binding bindingMotherboardTemperaturePCH = new Binding("Text", motherboardInfo, "TemperaturePCH", true);
+            bindingMotherboardTemperaturePCH.Format += (sender, e) => e.Value = $"{e.Value:0} C";
+            labelTemperaturePCHValue.DataBindings.Add(bindingMotherboardTemperaturePCH);
+
+            Binding bindingMotherboardTemperatureCPUSocket = new Binding("Text", motherboardInfo, "TemperatureCPUSocket", true);
+            bindingMotherboardTemperatureCPUSocket.Format += (sender, e) => e.Value = $"{e.Value:0} C";
+            labelTemperatureSocketValue.DataBindings.Add(bindingMotherboardTemperatureCPUSocket);
+
+            Binding bindingMotherboardTemperaturePCIex1 = new Binding("Text", motherboardInfo, "TemperaturePCIex1", true);
+            bindingMotherboardTemperaturePCIex1.Format += (sender, e) => e.Value = $"{e.Value:0} C";
+            labelTemperaturePCIex1Value.DataBindings.Add(bindingMotherboardTemperaturePCIex1);
         }
 
         private void LoadMotherboardInfo()
         {
-            labelMotherboardManufacturerValue.Text = mainboardInfo.Manufacturer;
-            labelMotherboardProductValue.Text = mainboardInfo.Product;
-            labelMotherboardVersionValue.Text = mainboardInfo.Version;
+            labelMotherboardManufacturerValue.Text = motherboardInfo.Manufacturer;
+            labelMotherboardProductValue.Text = motherboardInfo.Product;
+            labelMotherboardVersionValue.Text = motherboardInfo.Version;
         }
 
         private void LoadBIOSInfo()
         {
-            labelBIOSManufacturerValue.Text = bios.Manufacturer;
-            labelBIOSVersionValue.Text = bios.Name;
-            labelBIOSReleaseDateValue.Text = bios.ReleaseDate.Insert(4, ".").Insert(7, ".").Substring(0, 10);
+            labelBIOSManufacturerValue.Text = biosInfo.Manufacturer;
+            labelBIOSVersionValue.Text = biosInfo.Name;
+            labelBIOSReleaseDateValue.Text = biosInfo.ReleaseDate.Insert(4, ".").Insert(7, ".").Substring(0, 10);
         }
 
         private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
@@ -87,6 +128,28 @@ namespace PC_Details
             {
                 cpuInfo.StopTimer();
             }
+            if (tabControlMain.SelectedIndex == 1)
+            {
+                motherboardInfo.StartTimer();
+            }
+            else
+            {
+                motherboardInfo.StopTimer();
+            }
+        }
+
+        private void comboBoxMemorySelection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadMemoryInfo(comboBoxMemorySelection.SelectedIndex);
+        }
+
+        private void LoadMemoryInfo(int index)
+        {
+            labelMemoryManufacturerValue.Text = memoryCollectionInfo.memoryInfoList[index].Manufacturer;
+            labelMemoryPartNumberValue.Text = memoryCollectionInfo.memoryInfoList[index].PartNumber;
+            labelMemorySerialNumberValue.Text = memoryCollectionInfo.memoryInfoList[index].SerialNumber;
+            labelMemoryCapacityValue.Text = $"{memoryCollectionInfo.memoryInfoList[index].Capacity / 1024 / 1024 / 1024} GB";
+            labelMemorySpeedValue.Text = $"{memoryCollectionInfo.memoryInfoList[index].Speed} MHz";
         }
     }
 }

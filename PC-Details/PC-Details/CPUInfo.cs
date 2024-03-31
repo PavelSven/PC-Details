@@ -12,15 +12,18 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Collections;
+using LibreHardwareMonitor.Hardware;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace PC_Details
 {
     public class CPUInfo : INotifyPropertyChanged
     {
-        private System.Timers.Timer TimerInfo { get; set; }
+        private System.Timers.Timer TimerInfo;
         public event PropertyChangedEventHandler PropertyChanged;
 
         public string Caption { get; set; }
+
         private uint currentClockSpeed; 
         public uint CurrentClockSpeed 
         {
@@ -50,6 +53,7 @@ namespace PC_Details
         public string SocketDesignation {  get; set; }
         public bool VirtualizationFirmwareEnabled { get; set; }
         public bool VMMonitorModeExtensions { get; set; }   //Возможно не понадобится, похожу на VirtualizationFirmwareEnabled
+        
         private ulong percentProcessorTime;
         public ulong PercentProcessorTime 
         {
@@ -64,7 +68,37 @@ namespace PC_Details
             }
         }
 
-        //public ushort Family {  get; set; }
+        private float? temperature;
+        public float? Temperature
+        {
+            get => temperature;
+            set
+            {
+                if (value == null)
+                    value = 0;
+                if (temperature != value)
+                {
+                    temperature = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        
+        private float? busSpeed;
+        public float? BusSpeed
+        {
+            get { return busSpeed; }
+            set
+            {
+                if (value == null)
+                    value = 0;
+                if (busSpeed != value)
+                {
+                    busSpeed = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         public CPUInfo()
         {
@@ -83,7 +117,7 @@ namespace PC_Details
             uint L1InstructionCacheSizeTemp = 0;
             uint L1DataCacheSizeTemp = 0;
 
-            ManagementObjectSearcher Win32_CacheMemory = new ManagementObjectSearcher("SELECT * FROM Win32_CacheMemory WHERE Level = 3");
+/*            ManagementObjectSearcher Win32_CacheMemory = new ManagementObjectSearcher("SELECT * FROM Win32_CacheMemory WHERE Level = 3");
             foreach (ManagementObject mo in Win32_CacheMemory.Get())
             {
                 ushort CacheType = Convert.ToUInt16(mo["CacheType"]);
@@ -102,7 +136,7 @@ namespace PC_Details
 
                 if (CacheType == 4) // Data
                     L1DataCacheSizeTemp = MaxCacheSize;
-            }
+            }*/
 
 
 
@@ -113,8 +147,8 @@ namespace PC_Details
                 Caption = mo["Caption"].ToString();
                 //CurrentVoltage = Convert.ToDouble(mo["CurrentVoltage"]) / 10.0;
                 Description = mo["Description"].ToString();
-                L1InstructionCacheSize = L1InstructionCacheSizeTemp;
-                L1DataCacheSize = L1DataCacheSizeTemp;
+                //L1InstructionCacheSize = L1InstructionCacheSizeTemp;
+                //L1DataCacheSize = L1DataCacheSizeTemp;
                 L2CacheSize = 1024 * Convert.ToUInt32(mo["L2CacheSize"]);
                 L3CacheSize = 1024 * Convert.ToUInt32(mo["L3CacheSize"]);
                 Manufacturer = mo["Manufacturer"].ToString();
@@ -127,8 +161,6 @@ namespace PC_Details
                 SocketDesignation = mo["SocketDesignation"].ToString();
                 VirtualizationFirmwareEnabled = Convert.ToBoolean(mo["VirtualizationFirmwareEnabled"]);
                 VMMonitorModeExtensions = Convert.ToBoolean(mo["VMMonitorModeExtensions"]);
-
-                //Family = Convert.ToUInt16(mo["Family"]);
             }
 
             mos.Dispose();
@@ -137,7 +169,7 @@ namespace PC_Details
         public void StartTimer()
         {
             TimerInfo = new System.Timers.Timer(1500);
-            TimerInfo.Elapsed += TimerInfo_Elapsed;
+            TimerInfo.Elapsed += (s, e) => UpdateDynamicInfo();
             TimerInfo.Enabled = true;
             TimerInfo.AutoReset = true;
         }
@@ -147,23 +179,8 @@ namespace PC_Details
             TimerInfo.Enabled = false;
         }
 
-        private void TimerInfo_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            UpdateDynamicInfo();
-        }
-
         public void UpdateDynamicInfo()
         {
-            /*            ManagementObjectSearcher percentProcessorTimemos =
-                            new ManagementObjectSearcher(
-                                "SELECT * FROM Win32_PerfFormattedData_PerfOS_Processor WHERE Name = '_Total'");
-
-                        foreach(ManagementBaseObject mo in percentProcessorTimemos.Get())
-                        {
-                            PercentProcessorTime = Convert.ToUInt64(mo["PercentProcessorTime"]);
-                        }
-
-                         percentProcessorTimemos.Dispose()*/
             PerformanceCounter cpuCounter =
                 new PerformanceCounter("Processor Information", "% Processor Performance", "_Total");
             
@@ -181,34 +198,28 @@ namespace PC_Details
                 CurrentClockSpeed = (uint)(MaxClockSpeed * (processorPerformance / 100));
                 PercentProcessorTime = Convert.ToUInt64(mo["LoadPercentage"]);
             }
-
             mos.Dispose();
+
+            UpdateFromHardwareMonitor();
         }
 
-        public override string ToString()
+        public void UpdateFromHardwareMonitor()
         {
-            return
-                $"Caption: {Caption}" +
-                $"\nCurrentClockSpeed: {CurrentClockSpeed}" +
-                $"\nDescription: {Description}" +
-                $"\nL1InstructionCacheSize: {L1InstructionCacheSize}" +
-                $"\nL1DataCacheSize: {L1DataCacheSize}" +
-                $"\nL2CacheSize: {L2CacheSize}" +
-                $"\nL3CacheSize: {L3CacheSize}" +
-                $"\nManufacturer: {Manufacturer}" +
-                $"\nMaxClockSpeed: {MaxClockSpeed}" +
-                $"\nName: {Name}" +
-                $"\nNumberOfCores: {NumberOfCores}" +
-                $"\nNumberOfLogicalProcessors: {NumberOfLogicalProcessors}" +
-                $"\nProcessorId: {ProcessorId}" +
-                $"\nSecondLevelAddressTranslationExtensions: {SecondLevelAddressTranslationExtensions}" +
-                $"\nSocketDesignation: {SocketDesignation}" +
-                $"\nVirtualizationFirmwareEnabled: {VirtualizationFirmwareEnabled}" +
-                $"\nVMMonitorModeExtensions: {VMMonitorModeExtensions}" +
-                $"\nPercentProcessorTime: {PercentProcessorTime}";
+            Computer computer = new Computer();
+            computer.IsCpuEnabled = true;
+            computer.Open();
+            computer.Accept(new UpdateVisitor());
 
-                //$"\nFamily: {Family}";
+            IHardware hardwareCpu = computer.Hardware.First(h => h.HardwareType == HardwareType.Cpu);
+
+            ISensor sensorTemperature =  hardwareCpu.Sensors.First(s => s.SensorType == SensorType.Temperature);
+            Temperature = sensorTemperature.Value;
+
+            ISensor sensorBusSpeed = 
+                hardwareCpu.Sensors.Where(s => s.SensorType == SensorType.Clock).First(s => s.Name == "Bus Speed");
+            BusSpeed = sensorBusSpeed.Value;
+
+            computer.Close();
         }
-
     }
 }

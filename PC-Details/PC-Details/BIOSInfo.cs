@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace PC_Details
 {
-    public class BIOS
+    public class BIOSInfo
     {
         public string Manufacturer {get;set;}
         public string Name { get;set;}
         public string ReleaseDate { get;set;}
 
-        public BIOS()
+        public BIOSInfo()
         {
             UpdateInfo();
         }
@@ -28,6 +28,7 @@ namespace PC_Details
                     ReleaseDate = mo["ReleaseDate"].ToString();
                 
                 }
+            Win32_BIOS.Dispose();
         }
     }
 }

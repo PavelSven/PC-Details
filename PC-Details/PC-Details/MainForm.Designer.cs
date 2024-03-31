@@ -32,7 +32,7 @@
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageCPU = new System.Windows.Forms.TabPage();
             this.groupBoxCache = new System.Windows.Forms.GroupBox();
-            this.labelCPUL3CahceSize = new System.Windows.Forms.Label();
+            this.labelCPUL3CacheSize = new System.Windows.Forms.Label();
             this.labelCPUL2CacheSize = new System.Windows.Forms.Label();
             this.labelCPUL3CacheSizeValue = new System.Windows.Forms.Label();
             this.labelCPUL2CacheSizeValue = new System.Windows.Forms.Label();
@@ -44,8 +44,10 @@
             this.groupBoxProcessor = new System.Windows.Forms.GroupBox();
             this.labelCPUNumberOfLogicalProcessors = new System.Windows.Forms.Label();
             this.labelCPUNumberOfCores = new System.Windows.Forms.Label();
+            this.labelCPUProcessorTemperature = new System.Windows.Forms.Label();
             this.labelCPUSocketDesignation = new System.Windows.Forms.Label();
             this.labelCPUNumberOfLogicalProcessorsValue = new System.Windows.Forms.Label();
+            this.labelCPUProcessorTemperatureValue = new System.Windows.Forms.Label();
             this.labelCPUNumberOfCoresValue = new System.Windows.Forms.Label();
             this.labelCPUSocketDesignationValue = new System.Windows.Forms.Label();
             this.labelCPUName = new System.Windows.Forms.Label();
@@ -55,7 +57,24 @@
             this.labelCPUCaptionValue = new System.Windows.Forms.Label();
             this.labelCPUCaption = new System.Windows.Forms.Label();
             this.tabPageMainboard = new System.Windows.Forms.TabPage();
+            this.groupBoxMotherboardTemperature = new System.Windows.Forms.GroupBox();
+            this.labelTemperatureSocket = new System.Windows.Forms.Label();
+            this.labelTemperatureSocketValue = new System.Windows.Forms.Label();
+            this.labelTemperatureVRMMOS = new System.Windows.Forms.Label();
+            this.labelTemperaturePCH = new System.Windows.Forms.Label();
+            this.labelTemperatureVRMMOSValue = new System.Windows.Forms.Label();
+            this.labelTemperaturePCHValue = new System.Windows.Forms.Label();
+            this.labelTemperaturePCIex1 = new System.Windows.Forms.Label();
+            this.labelTemperaturePCIex1Value = new System.Windows.Forms.Label();
+            this.labelTemperatureSystem = new System.Windows.Forms.Label();
+            this.labelTemperatureSystemValue = new System.Windows.Forms.Label();
             this.groupBoxBIOS = new System.Windows.Forms.GroupBox();
+            this.labelBIOSReleaseDate = new System.Windows.Forms.Label();
+            this.labelBIOSReleaseDateValue = new System.Windows.Forms.Label();
+            this.labelBIOSVersion = new System.Windows.Forms.Label();
+            this.labelBIOSVersionValue = new System.Windows.Forms.Label();
+            this.labelBIOSManufacturer = new System.Windows.Forms.Label();
+            this.labelBIOSManufacturerValue = new System.Windows.Forms.Label();
             this.groupBoxMotherboard = new System.Windows.Forms.GroupBox();
             this.labelMotherboardVersionValue = new System.Windows.Forms.Label();
             this.labelMotherboardProductValue = new System.Windows.Forms.Label();
@@ -63,20 +82,34 @@
             this.labelMotherboardManufacturerValue = new System.Windows.Forms.Label();
             this.labelMotherboardManufacturer = new System.Windows.Forms.Label();
             this.tabPageMemory = new System.Windows.Forms.TabPage();
-            this.labelBIOSManufacturer = new System.Windows.Forms.Label();
-            this.labelBIOSManufacturerValue = new System.Windows.Forms.Label();
-            this.labelBIOSVersionValue = new System.Windows.Forms.Label();
-            this.labelBIOSVersion = new System.Windows.Forms.Label();
-            this.labelBIOSReleaseDateValue = new System.Windows.Forms.Label();
-            this.labelBIOSReleaseDate = new System.Windows.Forms.Label();
+            this.groupBoxMemorySelection = new System.Windows.Forms.GroupBox();
+            this.comboBoxMemorySelection = new System.Windows.Forms.ComboBox();
+            this.labelMemorySerialNumber = new System.Windows.Forms.Label();
+            this.labelMemorySerialNumberValue = new System.Windows.Forms.Label();
+            this.labelMemorySpeed = new System.Windows.Forms.Label();
+            this.labelMemorySpeedValue = new System.Windows.Forms.Label();
+            this.labelMemoryCapacity = new System.Windows.Forms.Label();
+            this.labelMemoryCapacityValue = new System.Windows.Forms.Label();
+            this.labelMemoryPartNumber = new System.Windows.Forms.Label();
+            this.labelMemoryPartNumberValue = new System.Windows.Forms.Label();
+            this.labelMemoryManufacturer = new System.Windows.Forms.Label();
+            this.labelMemoryManufacturerValue = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelCPUBusSpeedValue = new System.Windows.Forms.Label();
+            this.labelCPUBusSpeed = new System.Windows.Forms.Label();
             this.tabControlMain.SuspendLayout();
             this.tabPageCPU.SuspendLayout();
             this.groupBoxCache.SuspendLayout();
             this.groupBoxClocks.SuspendLayout();
             this.groupBoxProcessor.SuspendLayout();
             this.tabPageMainboard.SuspendLayout();
+            this.groupBoxMotherboardTemperature.SuspendLayout();
             this.groupBoxBIOS.SuspendLayout();
             this.groupBoxMotherboard.SuspendLayout();
+            this.tabPageMemory.SuspendLayout();
+            this.groupBoxMemorySelection.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -84,10 +117,11 @@
             this.tabControlMain.Controls.Add(this.tabPageCPU);
             this.tabControlMain.Controls.Add(this.tabPageMainboard);
             this.tabControlMain.Controls.Add(this.tabPageMemory);
+            this.tabControlMain.Controls.Add(this.tabPage1);
             this.tabControlMain.Location = new System.Drawing.Point(3, 3);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(441, 329);
+            this.tabControlMain.Size = new System.Drawing.Size(441, 701);
             this.tabControlMain.TabIndex = 0;
             this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.tabControlMain_SelectedIndexChanged);
             // 
@@ -99,14 +133,14 @@
             this.tabPageCPU.Location = new System.Drawing.Point(4, 22);
             this.tabPageCPU.Name = "tabPageCPU";
             this.tabPageCPU.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCPU.Size = new System.Drawing.Size(433, 303);
+            this.tabPageCPU.Size = new System.Drawing.Size(433, 675);
             this.tabPageCPU.TabIndex = 0;
             this.tabPageCPU.Text = "CPU";
             this.tabPageCPU.UseVisualStyleBackColor = true;
             // 
             // groupBoxCache
             // 
-            this.groupBoxCache.Controls.Add(this.labelCPUL3CahceSize);
+            this.groupBoxCache.Controls.Add(this.labelCPUL3CacheSize);
             this.groupBoxCache.Controls.Add(this.labelCPUL2CacheSize);
             this.groupBoxCache.Controls.Add(this.labelCPUL3CacheSizeValue);
             this.groupBoxCache.Controls.Add(this.labelCPUL2CacheSizeValue);
@@ -117,14 +151,14 @@
             this.groupBoxCache.TabStop = false;
             this.groupBoxCache.Text = "Cache";
             // 
-            // labelCPUL3CahceSize
+            // labelCPUL3CacheSize
             // 
-            this.labelCPUL3CahceSize.AutoSize = true;
-            this.labelCPUL3CahceSize.Location = new System.Drawing.Point(6, 78);
-            this.labelCPUL3CahceSize.Name = "labelCPUL3CahceSize";
-            this.labelCPUL3CahceSize.Size = new System.Drawing.Size(19, 13);
-            this.labelCPUL3CahceSize.TabIndex = 3;
-            this.labelCPUL3CahceSize.Text = "L3";
+            this.labelCPUL3CacheSize.AutoSize = true;
+            this.labelCPUL3CacheSize.Location = new System.Drawing.Point(6, 78);
+            this.labelCPUL3CacheSize.Name = "labelCPUL3CacheSize";
+            this.labelCPUL3CacheSize.Size = new System.Drawing.Size(19, 13);
+            this.labelCPUL3CacheSize.TabIndex = 3;
+            this.labelCPUL3CacheSize.Text = "L3";
             // 
             // labelCPUL2CacheSize
             // 
@@ -161,6 +195,8 @@
             // 
             // groupBoxClocks
             // 
+            this.groupBoxClocks.Controls.Add(this.labelCPUBusSpeed);
+            this.groupBoxClocks.Controls.Add(this.labelCPUBusSpeedValue);
             this.groupBoxClocks.Controls.Add(this.labelCPUPercentProcessorTime);
             this.groupBoxClocks.Controls.Add(this.labelCPUPercentProcessorTimeValue);
             this.groupBoxClocks.Controls.Add(this.labelCPUCurrentClockSpeed);
@@ -190,7 +226,7 @@
             this.labelCPUPercentProcessorTimeValue.Name = "labelCPUPercentProcessorTimeValue";
             this.labelCPUPercentProcessorTimeValue.Size = new System.Drawing.Size(78, 22);
             this.labelCPUPercentProcessorTimeValue.TabIndex = 2;
-            this.labelCPUPercentProcessorTimeValue.Text = "labellabelCPUPercentProcessorTimeValue";
+            this.labelCPUPercentProcessorTimeValue.Text = "labelCPUPercentProcessorTimeValue";
             this.labelCPUPercentProcessorTimeValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelCPUCurrentClockSpeed
@@ -218,8 +254,10 @@
             // 
             this.groupBoxProcessor.Controls.Add(this.labelCPUNumberOfLogicalProcessors);
             this.groupBoxProcessor.Controls.Add(this.labelCPUNumberOfCores);
+            this.groupBoxProcessor.Controls.Add(this.labelCPUProcessorTemperature);
             this.groupBoxProcessor.Controls.Add(this.labelCPUSocketDesignation);
             this.groupBoxProcessor.Controls.Add(this.labelCPUNumberOfLogicalProcessorsValue);
+            this.groupBoxProcessor.Controls.Add(this.labelCPUProcessorTemperatureValue);
             this.groupBoxProcessor.Controls.Add(this.labelCPUNumberOfCoresValue);
             this.groupBoxProcessor.Controls.Add(this.labelCPUSocketDesignationValue);
             this.groupBoxProcessor.Controls.Add(this.labelCPUName);
@@ -231,7 +269,7 @@
             this.groupBoxProcessor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBoxProcessor.Location = new System.Drawing.Point(6, 6);
             this.groupBoxProcessor.Name = "groupBoxProcessor";
-            this.groupBoxProcessor.Size = new System.Drawing.Size(421, 136);
+            this.groupBoxProcessor.Size = new System.Drawing.Size(421, 162);
             this.groupBoxProcessor.TabIndex = 1;
             this.groupBoxProcessor.TabStop = false;
             this.groupBoxProcessor.Text = "Processor";
@@ -254,6 +292,15 @@
             this.labelCPUNumberOfCores.TabIndex = 2;
             this.labelCPUNumberOfCores.Text = "Cores";
             // 
+            // labelCPUProcessorTemperature
+            // 
+            this.labelCPUProcessorTemperature.AutoSize = true;
+            this.labelCPUProcessorTemperature.Location = new System.Drawing.Point(6, 131);
+            this.labelCPUProcessorTemperature.Name = "labelCPUProcessorTemperature";
+            this.labelCPUProcessorTemperature.Size = new System.Drawing.Size(67, 13);
+            this.labelCPUProcessorTemperature.TabIndex = 2;
+            this.labelCPUProcessorTemperature.Text = "Temperature";
+            // 
             // labelCPUSocketDesignation
             // 
             this.labelCPUSocketDesignation.AutoSize = true;
@@ -274,6 +321,18 @@
             this.labelCPUNumberOfLogicalProcessorsValue.TabIndex = 1;
             this.labelCPUNumberOfLogicalProcessorsValue.Text = "labelCPUNumberOfLogicalProcessorsValue";
             this.labelCPUNumberOfLogicalProcessorsValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelCPUProcessorTemperatureValue
+            // 
+            this.labelCPUProcessorTemperatureValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelCPUProcessorTemperatureValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelCPUProcessorTemperatureValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.labelCPUProcessorTemperatureValue.Location = new System.Drawing.Point(78, 127);
+            this.labelCPUProcessorTemperatureValue.Name = "labelCPUProcessorTemperatureValue";
+            this.labelCPUProcessorTemperatureValue.Size = new System.Drawing.Size(63, 21);
+            this.labelCPUProcessorTemperatureValue.TabIndex = 1;
+            this.labelCPUProcessorTemperatureValue.Text = "labelCPUProcessorTemperatureValue";
+            this.labelCPUProcessorTemperatureValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelCPUNumberOfCoresValue
             // 
@@ -364,15 +423,140 @@
             // 
             // tabPageMainboard
             // 
+            this.tabPageMainboard.Controls.Add(this.groupBoxMotherboardTemperature);
             this.tabPageMainboard.Controls.Add(this.groupBoxBIOS);
             this.tabPageMainboard.Controls.Add(this.groupBoxMotherboard);
             this.tabPageMainboard.Location = new System.Drawing.Point(4, 22);
             this.tabPageMainboard.Name = "tabPageMainboard";
             this.tabPageMainboard.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMainboard.Size = new System.Drawing.Size(433, 303);
+            this.tabPageMainboard.Size = new System.Drawing.Size(433, 300);
             this.tabPageMainboard.TabIndex = 1;
             this.tabPageMainboard.Text = "Mainboard";
             this.tabPageMainboard.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxMotherboardTemperature
+            // 
+            this.groupBoxMotherboardTemperature.Controls.Add(this.labelTemperatureSocket);
+            this.groupBoxMotherboardTemperature.Controls.Add(this.labelTemperatureSocketValue);
+            this.groupBoxMotherboardTemperature.Controls.Add(this.labelTemperatureVRMMOS);
+            this.groupBoxMotherboardTemperature.Controls.Add(this.labelTemperaturePCH);
+            this.groupBoxMotherboardTemperature.Controls.Add(this.labelTemperatureVRMMOSValue);
+            this.groupBoxMotherboardTemperature.Controls.Add(this.labelTemperaturePCHValue);
+            this.groupBoxMotherboardTemperature.Controls.Add(this.labelTemperaturePCIex1);
+            this.groupBoxMotherboardTemperature.Controls.Add(this.labelTemperaturePCIex1Value);
+            this.groupBoxMotherboardTemperature.Controls.Add(this.labelTemperatureSystem);
+            this.groupBoxMotherboardTemperature.Controls.Add(this.labelTemperatureSystemValue);
+            this.groupBoxMotherboardTemperature.Location = new System.Drawing.Point(7, 93);
+            this.groupBoxMotherboardTemperature.Name = "groupBoxMotherboardTemperature";
+            this.groupBoxMotherboardTemperature.Size = new System.Drawing.Size(421, 104);
+            this.groupBoxMotherboardTemperature.TabIndex = 3;
+            this.groupBoxMotherboardTemperature.TabStop = false;
+            this.groupBoxMotherboardTemperature.Text = "Temperature";
+            // 
+            // labelTemperatureSocket
+            // 
+            this.labelTemperatureSocket.AutoSize = true;
+            this.labelTemperatureSocket.Location = new System.Drawing.Point(7, 50);
+            this.labelTemperatureSocket.Name = "labelTemperatureSocket";
+            this.labelTemperatureSocket.Size = new System.Drawing.Size(66, 13);
+            this.labelTemperatureSocket.TabIndex = 0;
+            this.labelTemperatureSocket.Text = "CPU Socket";
+            // 
+            // labelTemperatureSocketValue
+            // 
+            this.labelTemperatureSocketValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelTemperatureSocketValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTemperatureSocketValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.labelTemperatureSocketValue.Location = new System.Drawing.Point(83, 46);
+            this.labelTemperatureSocketValue.Name = "labelTemperatureSocketValue";
+            this.labelTemperatureSocketValue.Size = new System.Drawing.Size(77, 17);
+            this.labelTemperatureSocketValue.TabIndex = 0;
+            this.labelTemperatureSocketValue.Text = "labelTemperatureSocketValue";
+            this.labelTemperatureSocketValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelTemperatureVRMMOS
+            // 
+            this.labelTemperatureVRMMOS.AutoSize = true;
+            this.labelTemperatureVRMMOS.Location = new System.Drawing.Point(267, 25);
+            this.labelTemperatureVRMMOS.Name = "labelTemperatureVRMMOS";
+            this.labelTemperatureVRMMOS.Size = new System.Drawing.Size(58, 13);
+            this.labelTemperatureVRMMOS.TabIndex = 0;
+            this.labelTemperatureVRMMOS.Text = "VRM MOS";
+            // 
+            // labelTemperaturePCH
+            // 
+            this.labelTemperaturePCH.AutoSize = true;
+            this.labelTemperaturePCH.Location = new System.Drawing.Point(267, 53);
+            this.labelTemperaturePCH.Name = "labelTemperaturePCH";
+            this.labelTemperaturePCH.Size = new System.Drawing.Size(29, 13);
+            this.labelTemperaturePCH.TabIndex = 0;
+            this.labelTemperaturePCH.Text = "PCH";
+            // 
+            // labelTemperatureVRMMOSValue
+            // 
+            this.labelTemperatureVRMMOSValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelTemperatureVRMMOSValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTemperatureVRMMOSValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.labelTemperatureVRMMOSValue.Location = new System.Drawing.Point(344, 21);
+            this.labelTemperatureVRMMOSValue.Name = "labelTemperatureVRMMOSValue";
+            this.labelTemperatureVRMMOSValue.Size = new System.Drawing.Size(70, 17);
+            this.labelTemperatureVRMMOSValue.TabIndex = 0;
+            this.labelTemperatureVRMMOSValue.Text = "labelTemperatureVRMMOSValue";
+            this.labelTemperatureVRMMOSValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelTemperaturePCHValue
+            // 
+            this.labelTemperaturePCHValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelTemperaturePCHValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTemperaturePCHValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.labelTemperaturePCHValue.Location = new System.Drawing.Point(343, 49);
+            this.labelTemperaturePCHValue.Name = "labelTemperaturePCHValue";
+            this.labelTemperaturePCHValue.Size = new System.Drawing.Size(70, 17);
+            this.labelTemperaturePCHValue.TabIndex = 0;
+            this.labelTemperaturePCHValue.Text = "labelTemperaturePCHValue";
+            this.labelTemperaturePCHValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelTemperaturePCIex1
+            // 
+            this.labelTemperaturePCIex1.AutoSize = true;
+            this.labelTemperaturePCIex1.Location = new System.Drawing.Point(7, 77);
+            this.labelTemperaturePCIex1.Name = "labelTemperaturePCIex1";
+            this.labelTemperaturePCIex1.Size = new System.Drawing.Size(47, 13);
+            this.labelTemperaturePCIex1.TabIndex = 0;
+            this.labelTemperaturePCIex1.Text = "PCIe x 1";
+            // 
+            // labelTemperaturePCIex1Value
+            // 
+            this.labelTemperaturePCIex1Value.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelTemperaturePCIex1Value.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTemperaturePCIex1Value.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.labelTemperaturePCIex1Value.Location = new System.Drawing.Point(83, 73);
+            this.labelTemperaturePCIex1Value.Name = "labelTemperaturePCIex1Value";
+            this.labelTemperaturePCIex1Value.Size = new System.Drawing.Size(77, 17);
+            this.labelTemperaturePCIex1Value.TabIndex = 0;
+            this.labelTemperaturePCIex1Value.Text = "labelTemperaturePCIex1Value";
+            this.labelTemperaturePCIex1Value.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelTemperatureSystem
+            // 
+            this.labelTemperatureSystem.AutoSize = true;
+            this.labelTemperatureSystem.Location = new System.Drawing.Point(7, 25);
+            this.labelTemperatureSystem.Name = "labelTemperatureSystem";
+            this.labelTemperatureSystem.Size = new System.Drawing.Size(41, 13);
+            this.labelTemperatureSystem.TabIndex = 0;
+            this.labelTemperatureSystem.Text = "System";
+            // 
+            // labelTemperatureSystemValue
+            // 
+            this.labelTemperatureSystemValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelTemperatureSystemValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTemperatureSystemValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.labelTemperatureSystemValue.Location = new System.Drawing.Point(82, 21);
+            this.labelTemperatureSystemValue.Name = "labelTemperatureSystemValue";
+            this.labelTemperatureSystemValue.Size = new System.Drawing.Size(77, 17);
+            this.labelTemperatureSystemValue.TabIndex = 0;
+            this.labelTemperatureSystemValue.Text = "labelTemperatureSystemValue";
+            this.labelTemperatureSystemValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBoxBIOS
             // 
@@ -382,12 +566,75 @@
             this.groupBoxBIOS.Controls.Add(this.labelBIOSVersionValue);
             this.groupBoxBIOS.Controls.Add(this.labelBIOSManufacturer);
             this.groupBoxBIOS.Controls.Add(this.labelBIOSManufacturerValue);
-            this.groupBoxBIOS.Location = new System.Drawing.Point(7, 106);
+            this.groupBoxBIOS.Location = new System.Drawing.Point(7, 203);
             this.groupBoxBIOS.Name = "groupBoxBIOS";
-            this.groupBoxBIOS.Size = new System.Drawing.Size(420, 100);
+            this.groupBoxBIOS.Size = new System.Drawing.Size(420, 91);
             this.groupBoxBIOS.TabIndex = 2;
             this.groupBoxBIOS.TabStop = false;
             this.groupBoxBIOS.Text = "BIOS";
+            // 
+            // labelBIOSReleaseDate
+            // 
+            this.labelBIOSReleaseDate.AutoSize = true;
+            this.labelBIOSReleaseDate.Location = new System.Drawing.Point(215, 58);
+            this.labelBIOSReleaseDate.Name = "labelBIOSReleaseDate";
+            this.labelBIOSReleaseDate.Size = new System.Drawing.Size(30, 13);
+            this.labelBIOSReleaseDate.TabIndex = 0;
+            this.labelBIOSReleaseDate.Text = "Date";
+            // 
+            // labelBIOSReleaseDateValue
+            // 
+            this.labelBIOSReleaseDateValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelBIOSReleaseDateValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelBIOSReleaseDateValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.labelBIOSReleaseDateValue.Location = new System.Drawing.Point(270, 56);
+            this.labelBIOSReleaseDateValue.Name = "labelBIOSReleaseDateValue";
+            this.labelBIOSReleaseDateValue.Size = new System.Drawing.Size(144, 17);
+            this.labelBIOSReleaseDateValue.TabIndex = 0;
+            this.labelBIOSReleaseDateValue.Text = "labelBIOSReleaseDateValue";
+            this.labelBIOSReleaseDateValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelBIOSVersion
+            // 
+            this.labelBIOSVersion.AutoSize = true;
+            this.labelBIOSVersion.Location = new System.Drawing.Point(6, 60);
+            this.labelBIOSVersion.Name = "labelBIOSVersion";
+            this.labelBIOSVersion.Size = new System.Drawing.Size(42, 13);
+            this.labelBIOSVersion.TabIndex = 0;
+            this.labelBIOSVersion.Text = "Version";
+            // 
+            // labelBIOSVersionValue
+            // 
+            this.labelBIOSVersionValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelBIOSVersionValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelBIOSVersionValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.labelBIOSVersionValue.Location = new System.Drawing.Point(82, 56);
+            this.labelBIOSVersionValue.Name = "labelBIOSVersionValue";
+            this.labelBIOSVersionValue.Size = new System.Drawing.Size(67, 17);
+            this.labelBIOSVersionValue.TabIndex = 0;
+            this.labelBIOSVersionValue.Text = "labelBIOSVersionValue";
+            this.labelBIOSVersionValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelBIOSManufacturer
+            // 
+            this.labelBIOSManufacturer.AutoSize = true;
+            this.labelBIOSManufacturer.Location = new System.Drawing.Point(7, 26);
+            this.labelBIOSManufacturer.Name = "labelBIOSManufacturer";
+            this.labelBIOSManufacturer.Size = new System.Drawing.Size(70, 13);
+            this.labelBIOSManufacturer.TabIndex = 0;
+            this.labelBIOSManufacturer.Text = "Manufacturer";
+            // 
+            // labelBIOSManufacturerValue
+            // 
+            this.labelBIOSManufacturerValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelBIOSManufacturerValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelBIOSManufacturerValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.labelBIOSManufacturerValue.Location = new System.Drawing.Point(83, 22);
+            this.labelBIOSManufacturerValue.Name = "labelBIOSManufacturerValue";
+            this.labelBIOSManufacturerValue.Size = new System.Drawing.Size(331, 17);
+            this.labelBIOSManufacturerValue.TabIndex = 0;
+            this.labelBIOSManufacturerValue.Text = "labelBIOSManufacturerValue";
+            this.labelBIOSManufacturerValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBoxMotherboard
             // 
@@ -398,7 +645,7 @@
             this.groupBoxMotherboard.Controls.Add(this.labelMotherboardManufacturer);
             this.groupBoxMotherboard.Location = new System.Drawing.Point(7, 7);
             this.groupBoxMotherboard.Name = "groupBoxMotherboard";
-            this.groupBoxMotherboard.Size = new System.Drawing.Size(420, 84);
+            this.groupBoxMotherboard.Size = new System.Drawing.Size(420, 79);
             this.groupBoxMotherboard.TabIndex = 1;
             this.groupBoxMotherboard.TabStop = false;
             this.groupBoxMotherboard.Text = "Motherboard";
@@ -459,81 +706,193 @@
             // 
             // tabPageMemory
             // 
+            this.tabPageMemory.Controls.Add(this.groupBoxMemorySelection);
             this.tabPageMemory.Location = new System.Drawing.Point(4, 22);
             this.tabPageMemory.Name = "tabPageMemory";
-            this.tabPageMemory.Size = new System.Drawing.Size(433, 375);
+            this.tabPageMemory.Size = new System.Drawing.Size(433, 300);
             this.tabPageMemory.TabIndex = 2;
             this.tabPageMemory.Text = "Memory";
             this.tabPageMemory.UseVisualStyleBackColor = true;
             // 
-            // labelBIOSManufacturer
+            // groupBoxMemorySelection
             // 
-            this.labelBIOSManufacturer.AutoSize = true;
-            this.labelBIOSManufacturer.Location = new System.Drawing.Point(7, 26);
-            this.labelBIOSManufacturer.Name = "labelBIOSManufacturer";
-            this.labelBIOSManufacturer.Size = new System.Drawing.Size(70, 13);
-            this.labelBIOSManufacturer.TabIndex = 0;
-            this.labelBIOSManufacturer.Text = "Manufacturer";
+            this.groupBoxMemorySelection.Controls.Add(this.comboBoxMemorySelection);
+            this.groupBoxMemorySelection.Controls.Add(this.labelMemorySerialNumber);
+            this.groupBoxMemorySelection.Controls.Add(this.labelMemorySerialNumberValue);
+            this.groupBoxMemorySelection.Controls.Add(this.labelMemorySpeed);
+            this.groupBoxMemorySelection.Controls.Add(this.labelMemorySpeedValue);
+            this.groupBoxMemorySelection.Controls.Add(this.labelMemoryCapacity);
+            this.groupBoxMemorySelection.Controls.Add(this.labelMemoryCapacityValue);
+            this.groupBoxMemorySelection.Controls.Add(this.labelMemoryPartNumber);
+            this.groupBoxMemorySelection.Controls.Add(this.labelMemoryPartNumberValue);
+            this.groupBoxMemorySelection.Controls.Add(this.labelMemoryManufacturer);
+            this.groupBoxMemorySelection.Controls.Add(this.labelMemoryManufacturerValue);
+            this.groupBoxMemorySelection.Location = new System.Drawing.Point(6, 4);
+            this.groupBoxMemorySelection.Name = "groupBoxMemorySelection";
+            this.groupBoxMemorySelection.Size = new System.Drawing.Size(422, 129);
+            this.groupBoxMemorySelection.TabIndex = 0;
+            this.groupBoxMemorySelection.TabStop = false;
+            this.groupBoxMemorySelection.Text = "Memory Selection";
             // 
-            // labelBIOSManufacturerValue
+            // comboBoxMemorySelection
             // 
-            this.labelBIOSManufacturerValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelBIOSManufacturerValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelBIOSManufacturerValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelBIOSManufacturerValue.Location = new System.Drawing.Point(83, 22);
-            this.labelBIOSManufacturerValue.Name = "labelBIOSManufacturerValue";
-            this.labelBIOSManufacturerValue.Size = new System.Drawing.Size(331, 17);
-            this.labelBIOSManufacturerValue.TabIndex = 0;
-            this.labelBIOSManufacturerValue.Text = "labelBIOSManufacturerValue";
-            this.labelBIOSManufacturerValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.comboBoxMemorySelection.FormattingEnabled = true;
+            this.comboBoxMemorySelection.Location = new System.Drawing.Point(9, 20);
+            this.comboBoxMemorySelection.Name = "comboBoxMemorySelection";
+            this.comboBoxMemorySelection.Size = new System.Drawing.Size(92, 21);
+            this.comboBoxMemorySelection.TabIndex = 5;
+            this.comboBoxMemorySelection.SelectedIndexChanged += new System.EventHandler(this.comboBoxMemorySelection_SelectedIndexChanged);
             // 
-            // labelBIOSVersionValue
+            // labelMemorySerialNumber
             // 
-            this.labelBIOSVersionValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelBIOSVersionValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelBIOSVersionValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelBIOSVersionValue.Location = new System.Drawing.Point(82, 56);
-            this.labelBIOSVersionValue.Name = "labelBIOSVersionValue";
-            this.labelBIOSVersionValue.Size = new System.Drawing.Size(67, 17);
-            this.labelBIOSVersionValue.TabIndex = 0;
-            this.labelBIOSVersionValue.Text = "labelBIOSVersionValue";
-            this.labelBIOSVersionValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelMemorySerialNumber.Location = new System.Drawing.Point(6, 85);
+            this.labelMemorySerialNumber.Name = "labelMemorySerialNumber";
+            this.labelMemorySerialNumber.Size = new System.Drawing.Size(83, 21);
+            this.labelMemorySerialNumber.TabIndex = 4;
+            this.labelMemorySerialNumber.Text = "Serial Number";
+            this.labelMemorySerialNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // labelBIOSVersion
+            // labelMemorySerialNumberValue
             // 
-            this.labelBIOSVersion.AutoSize = true;
-            this.labelBIOSVersion.Location = new System.Drawing.Point(6, 60);
-            this.labelBIOSVersion.Name = "labelBIOSVersion";
-            this.labelBIOSVersion.Size = new System.Drawing.Size(42, 13);
-            this.labelBIOSVersion.TabIndex = 0;
-            this.labelBIOSVersion.Text = "Version";
+            this.labelMemorySerialNumberValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelMemorySerialNumberValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelMemorySerialNumberValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.labelMemorySerialNumberValue.Location = new System.Drawing.Point(95, 85);
+            this.labelMemorySerialNumberValue.Name = "labelMemorySerialNumberValue";
+            this.labelMemorySerialNumberValue.Size = new System.Drawing.Size(154, 21);
+            this.labelMemorySerialNumberValue.TabIndex = 3;
+            this.labelMemorySerialNumberValue.Text = "labelMemorySerialNumberValue";
+            this.labelMemorySerialNumberValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // labelBIOSReleaseDateValue
+            // labelMemorySpeed
             // 
-            this.labelBIOSReleaseDateValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelBIOSReleaseDateValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelBIOSReleaseDateValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelBIOSReleaseDateValue.Location = new System.Drawing.Point(270, 56);
-            this.labelBIOSReleaseDateValue.Name = "labelBIOSReleaseDateValue";
-            this.labelBIOSReleaseDateValue.Size = new System.Drawing.Size(144, 17);
-            this.labelBIOSReleaseDateValue.TabIndex = 0;
-            this.labelBIOSReleaseDateValue.Text = "labelBIOSReleaseDateValue";
-            this.labelBIOSReleaseDateValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelMemorySpeed.Location = new System.Drawing.Point(270, 85);
+            this.labelMemorySpeed.Name = "labelMemorySpeed";
+            this.labelMemorySpeed.Size = new System.Drawing.Size(60, 21);
+            this.labelMemorySpeed.TabIndex = 4;
+            this.labelMemorySpeed.Text = "Speed";
+            this.labelMemorySpeed.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // labelBIOSReleaseDate
+            // labelMemorySpeedValue
             // 
-            this.labelBIOSReleaseDate.AutoSize = true;
-            this.labelBIOSReleaseDate.Location = new System.Drawing.Point(215, 58);
-            this.labelBIOSReleaseDate.Name = "labelBIOSReleaseDate";
-            this.labelBIOSReleaseDate.Size = new System.Drawing.Size(30, 13);
-            this.labelBIOSReleaseDate.TabIndex = 0;
-            this.labelBIOSReleaseDate.Text = "Date";
+            this.labelMemorySpeedValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelMemorySpeedValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelMemorySpeedValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.labelMemorySpeedValue.Location = new System.Drawing.Point(336, 84);
+            this.labelMemorySpeedValue.Name = "labelMemorySpeedValue";
+            this.labelMemorySpeedValue.Size = new System.Drawing.Size(80, 21);
+            this.labelMemorySpeedValue.TabIndex = 3;
+            this.labelMemorySpeedValue.Text = "labelMemorySpeedValue";
+            this.labelMemorySpeedValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelMemoryCapacity
+            // 
+            this.labelMemoryCapacity.Location = new System.Drawing.Point(270, 53);
+            this.labelMemoryCapacity.Name = "labelMemoryCapacity";
+            this.labelMemoryCapacity.Size = new System.Drawing.Size(60, 21);
+            this.labelMemoryCapacity.TabIndex = 4;
+            this.labelMemoryCapacity.Text = "Capacity";
+            this.labelMemoryCapacity.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelMemoryCapacityValue
+            // 
+            this.labelMemoryCapacityValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelMemoryCapacityValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelMemoryCapacityValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.labelMemoryCapacityValue.Location = new System.Drawing.Point(336, 52);
+            this.labelMemoryCapacityValue.Name = "labelMemoryCapacityValue";
+            this.labelMemoryCapacityValue.Size = new System.Drawing.Size(80, 21);
+            this.labelMemoryCapacityValue.TabIndex = 3;
+            this.labelMemoryCapacityValue.Text = "labelMemoryCapacityValue";
+            this.labelMemoryCapacityValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelMemoryPartNumber
+            // 
+            this.labelMemoryPartNumber.Location = new System.Drawing.Point(6, 53);
+            this.labelMemoryPartNumber.Name = "labelMemoryPartNumber";
+            this.labelMemoryPartNumber.Size = new System.Drawing.Size(70, 21);
+            this.labelMemoryPartNumber.TabIndex = 4;
+            this.labelMemoryPartNumber.Text = "Part Number";
+            this.labelMemoryPartNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelMemoryPartNumberValue
+            // 
+            this.labelMemoryPartNumberValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelMemoryPartNumberValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelMemoryPartNumberValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.labelMemoryPartNumberValue.Location = new System.Drawing.Point(95, 53);
+            this.labelMemoryPartNumberValue.Name = "labelMemoryPartNumberValue";
+            this.labelMemoryPartNumberValue.Size = new System.Drawing.Size(154, 21);
+            this.labelMemoryPartNumberValue.TabIndex = 3;
+            this.labelMemoryPartNumberValue.Text = "labelMemoryPartNumberValue";
+            this.labelMemoryPartNumberValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelMemoryManufacturer
+            // 
+            this.labelMemoryManufacturer.Location = new System.Drawing.Point(123, 20);
+            this.labelMemoryManufacturer.Name = "labelMemoryManufacturer";
+            this.labelMemoryManufacturer.Size = new System.Drawing.Size(72, 21);
+            this.labelMemoryManufacturer.TabIndex = 4;
+            this.labelMemoryManufacturer.Text = "Manufacturer";
+            this.labelMemoryManufacturer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelMemoryManufacturerValue
+            // 
+            this.labelMemoryManufacturerValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelMemoryManufacturerValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelMemoryManufacturerValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.labelMemoryManufacturerValue.Location = new System.Drawing.Point(219, 20);
+            this.labelMemoryManufacturerValue.Name = "labelMemoryManufacturerValue";
+            this.labelMemoryManufacturerValue.Size = new System.Drawing.Size(197, 21);
+            this.labelMemoryManufacturerValue.TabIndex = 3;
+            this.labelMemoryManufacturerValue.Text = "labelMemoryManufacturerValue";
+            this.labelMemoryManufacturerValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(433, 675);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "label1";
+            // 
+            // labelCPUBusSpeedValue
+            // 
+            this.labelCPUBusSpeedValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelCPUBusSpeedValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelCPUBusSpeedValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.labelCPUBusSpeedValue.Location = new System.Drawing.Point(78, 74);
+            this.labelCPUBusSpeedValue.Name = "labelCPUBusSpeedValue";
+            this.labelCPUBusSpeedValue.Size = new System.Drawing.Size(78, 22);
+            this.labelCPUBusSpeedValue.TabIndex = 2;
+            this.labelCPUBusSpeedValue.Text = "labelCPUBusSpeedValue";
+            this.labelCPUBusSpeedValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelCPUBusSpeed
+            // 
+            this.labelCPUBusSpeed.AutoSize = true;
+            this.labelCPUBusSpeed.Location = new System.Drawing.Point(6, 78);
+            this.labelCPUBusSpeed.Name = "labelCPUBusSpeed";
+            this.labelCPUBusSpeed.Size = new System.Drawing.Size(59, 13);
+            this.labelCPUBusSpeed.TabIndex = 3;
+            this.labelCPUBusSpeed.Text = "Bus Speed";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(447, 336);
+            this.ClientSize = new System.Drawing.Size(447, 716);
             this.Controls.Add(this.tabControlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -550,10 +909,16 @@
             this.groupBoxProcessor.ResumeLayout(false);
             this.groupBoxProcessor.PerformLayout();
             this.tabPageMainboard.ResumeLayout(false);
+            this.groupBoxMotherboardTemperature.ResumeLayout(false);
+            this.groupBoxMotherboardTemperature.PerformLayout();
             this.groupBoxBIOS.ResumeLayout(false);
             this.groupBoxBIOS.PerformLayout();
             this.groupBoxMotherboard.ResumeLayout(false);
             this.groupBoxMotherboard.PerformLayout();
+            this.tabPageMemory.ResumeLayout(false);
+            this.groupBoxMemorySelection.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -583,7 +948,7 @@
         private System.Windows.Forms.Label labelCPUPercentProcessorTime;
         private System.Windows.Forms.Label labelCPUPercentProcessorTimeValue;
         private System.Windows.Forms.GroupBox groupBoxCache;
-        private System.Windows.Forms.Label labelCPUL3CahceSize;
+        private System.Windows.Forms.Label labelCPUL3CacheSize;
         private System.Windows.Forms.Label labelCPUL2CacheSize;
         private System.Windows.Forms.Label labelCPUL3CacheSizeValue;
         private System.Windows.Forms.Label labelCPUL2CacheSizeValue;
@@ -600,6 +965,35 @@
         private System.Windows.Forms.Label labelBIOSVersionValue;
         private System.Windows.Forms.Label labelBIOSManufacturer;
         private System.Windows.Forms.Label labelBIOSManufacturerValue;
+        private System.Windows.Forms.GroupBox groupBoxMemorySelection;
+        private System.Windows.Forms.ComboBox comboBoxMemorySelection;
+        private System.Windows.Forms.Label labelMemoryManufacturer;
+        private System.Windows.Forms.Label labelMemoryManufacturerValue;
+        private System.Windows.Forms.Label labelMemoryPartNumber;
+        private System.Windows.Forms.Label labelMemoryPartNumberValue;
+        private System.Windows.Forms.Label labelMemorySerialNumber;
+        private System.Windows.Forms.Label labelMemorySerialNumberValue;
+        private System.Windows.Forms.Label labelMemorySpeed;
+        private System.Windows.Forms.Label labelMemorySpeedValue;
+        private System.Windows.Forms.Label labelMemoryCapacity;
+        private System.Windows.Forms.Label labelMemoryCapacityValue;
+        private System.Windows.Forms.Label labelCPUProcessorTemperature;
+        private System.Windows.Forms.Label labelCPUProcessorTemperatureValue;
+        private System.Windows.Forms.Label labelTemperatureSystemValue;
+        private System.Windows.Forms.Label labelTemperatureSystem;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBoxMotherboardTemperature;
+        private System.Windows.Forms.Label labelTemperaturePCH;
+        private System.Windows.Forms.Label labelTemperaturePCHValue;
+        private System.Windows.Forms.Label labelTemperatureSocket;
+        private System.Windows.Forms.Label labelTemperatureSocketValue;
+        private System.Windows.Forms.Label labelTemperatureVRMMOS;
+        private System.Windows.Forms.Label labelTemperatureVRMMOSValue;
+        private System.Windows.Forms.Label labelTemperaturePCIex1;
+        private System.Windows.Forms.Label labelTemperaturePCIex1Value;
+        private System.Windows.Forms.Label labelCPUBusSpeed;
+        private System.Windows.Forms.Label labelCPUBusSpeedValue;
     }
 }
 
